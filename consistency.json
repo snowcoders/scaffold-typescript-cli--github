@@ -1,0 +1,9 @@
+{
+  "base": [
+    {
+      "name": "scaffold-typescript-cli--circleci",
+      "owner": "snowcoders",
+      "platform": "github"
+    }
+  ]
+}
