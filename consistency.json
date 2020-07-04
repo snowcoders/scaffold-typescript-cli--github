@@ -31,7 +31,7 @@
           "mergeOrder": "consumer_producer"
         }
       ],
-      "fileGlob": "./package.json",
+      "filePattern": "./package.json",
       "type": "json"
     },
     {
@@ -52,7 +52,7 @@
           "mergeOrder": "consumer"
         }
       ],
-      "fileGlob": "./.vscode/launch.json",
+      "filePattern": "./.vscode/launch.json",
       "type": "json"
     }
   ]
