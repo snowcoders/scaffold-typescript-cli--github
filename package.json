@@ -37,6 +37,7 @@
     "build:dev": "tsc -p ./tsconfig.json",
     "build": "tsc -p ./tsconfig.production.json",
     "clean": "rimraf coverage dist",
+    "cover": "cat ./coverage/lcov.info | coveralls",
     "prepare": "npm run clean && npm run build",
     "start": "npm run build:dev && node bin/index.js",
     "test": "jest"
