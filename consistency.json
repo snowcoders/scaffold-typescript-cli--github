@@ -55,10 +55,6 @@
         ],
         "filePattern": ".vscode/launch.json",
         "type": "json"
-      },
-      {
-        "filePattern": ".*ignore",
-        "type": "startsWith"
       }
     ]
   }
