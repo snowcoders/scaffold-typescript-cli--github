@@ -8,7 +8,7 @@
   "devDependencies": {
     "@snowcoders/renovate-config": "2.0.3",
     "@types/jest": "26.0.24",
-    "@types/node": "16.4.8",
+    "@types/node": "16.4.9",
     "@typescript-eslint/eslint-plugin": "4.28.5",
     "@typescript-eslint/parser": "4.28.5",
     "coveralls": "3.1.1",
