@@ -1,4 +1,4 @@
-import { printArray } from "../lib";
+import { printArray } from "../lib/index.js";
 
 export function run(args: string[]) {
   if (args == null || args.length === 0) {
