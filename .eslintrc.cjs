@@ -1,9 +1,11 @@
-const configs = require("@snowcoders/renovate-config");
-
-const { eslint } = configs;
+const { buildEslintConfig } = require("@snowcoders/renovate-config");
 
 module.exports = {
-  ...eslint,
+  ...buildEslintConfig({
+    esm: true,
+    prettier: true,
+    typescript: true,
+  }),
   env: {
     es2019: true,
     node: true,

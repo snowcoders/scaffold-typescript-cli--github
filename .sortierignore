@@ -1,5 +1,6 @@
-# From the .gitignore file
+# From the gitignore
 coverage
 dist
+dist-cjs
 node_modules
 *.log
