@@ -37,5 +37,6 @@ jobs:
 
       - name: Publish
         run: npx --no release-it -- --ci
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
