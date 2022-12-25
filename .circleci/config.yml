@@ -1,0 +1,15 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0.3
+jobs:
+  test:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm run test -- --maxWorkers=100%
+      - run: npm run cover
+workflows:
+  test:
+    jobs:
+      - test

@@ -1,3 +1,3 @@
-import { releaseIt } from "@snowcoders/renovate-config";
+const configs = require("@snowcoders/renovate-config");
 
-export default releaseIt;
+module.exports = configs.releaseIt;
