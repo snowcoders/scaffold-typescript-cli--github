@@ -1,3 +1,3 @@
 const configs = require("@snowcoders/renovate-config");
 
-module.exports = configs.husky;
+module.exports = configs.releaseIt;

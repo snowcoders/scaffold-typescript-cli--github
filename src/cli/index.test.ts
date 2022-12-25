@@ -1,9 +1,10 @@
+import { expect, jest, describe, beforeAll, beforeEach, afterAll, it } from "@jest/globals";
 import path from "path";
 import { run } from "./index";
 
 describe(path.relative(process.cwd(), __dirname), () => {
-  let consoleLogSpy: jest.SpyInstance<void, any>;
-  let consoleErrorSpy: jest.SpyInstance<void, any>;
+  let consoleLogSpy: jest.SpiedFunction<typeof console.log>;
+  let consoleErrorSpy: jest.SpiedFunction<typeof console.error>;
 
   beforeAll(() => {
     consoleLogSpy = jest.spyOn(console, "log");
