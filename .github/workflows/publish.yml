@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: NPM Publish via Release IT
+name: NPM Publish
 
 on:
   push:
@@ -12,17 +12,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js lts
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: use Node.js lts
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
           cache: "npm"
+
       - name: git config
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-      - run: npm ci --ignore-scripts
-      - name: npx --no release-it -- --ci --dry-run
+
+      - name: install
+        run: npm ci --ignore-scripts
+
+      - name: build
+        run: npm run build --if-present
+
+      - name: test
+        run: npm test
+
+      - name: release-it
+        uses: npx --no release-it -- --ci --dry-run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
