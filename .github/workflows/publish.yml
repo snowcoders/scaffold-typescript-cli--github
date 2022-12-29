@@ -11,6 +11,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -19,7 +23,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
-          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Git config
         run: |
@@ -35,8 +39,9 @@ jobs:
       - name: Test
         run: npm test
 
+      - name: NPM config
+        run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+
       - name: Publish
         run: npx --no release-it -- --ci
         continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
