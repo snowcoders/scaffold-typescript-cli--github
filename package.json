@@ -32,8 +32,8 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist-cjs/index.js"
+      "import": "./dist/lib/index.js",
+      "require": "./dist-cjs/lib/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -42,7 +42,7 @@
     "TODO"
   ],
   "license": "UNLICENSED",
-  "main": "./dist-cjs/index.js",
+  "main": "./dist-cjs/lib/index.js",
   "name": "@snowcoders/scaffold-typescript-cli--circleci",
   "private": "true",
   "repository": "TODO",
