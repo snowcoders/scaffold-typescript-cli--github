@@ -1,11 +1,15 @@
-import { expect, jest, describe, beforeAll, beforeEach, afterAll, it } from "@jest/globals";
-import path from "path";
-import { run } from "./index";
+import { expect, jest, beforeAll, beforeEach, afterAll, it } from "@jest/globals";
+
+jest.unstable_mockModule("../lib/index.js", () => ({
+  printArray: jest.fn(() => {}),
+}));
+const { run } = await import("./index.js");
+const { printArray } = jest.mocked(await import("../lib/index.js"));
 
 let consoleLogSpy: jest.SpiedFunction<typeof console.log>;
 let consoleErrorSpy: jest.SpiedFunction<typeof console.error>;
 
-beforeAll(() => {
+beforeAll(async () => {
   consoleLogSpy = jest.spyOn(console, "log");
   consoleErrorSpy = jest.spyOn(console, "error");
   consoleLogSpy.mockImplementation(() => {});
@@ -23,9 +27,15 @@ afterAll(() => {
 });
 
 it("Returns -1 when no arguments are passed", () => {
-  expect(run([])).toBe(-1);
+  const result = run([]);
+
+  expect(printArray).not.toHaveBeenCalledWith([]);
+  expect(result).toBe(-1);
 });
 
 it("Returns 0 when an argument is provided", () => {
-  expect(run(["asdf"])).toBe(0);
+  const result = run(["asdf"]);
+
+  expect(printArray).toHaveBeenCalledWith(["asdf"]);
+  expect(result).toBe(0);
 });
