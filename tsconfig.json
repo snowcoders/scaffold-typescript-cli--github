@@ -2,8 +2,9 @@
   "compilerOptions": {
     "noUnusedLocals": false,
     "outDir": "./dist",
+    "resolveJsonModule": true,
     "rootDir": "./src"
   },
-  "include": ["./src/**/*"],
-  "extends": "./node_modules/@snowcoders/renovate-config/tsconfig.library.json"
+  "extends": "./node_modules/@snowcoders/renovate-config/tsconfig.library.json",
+  "include": ["./src/**/*"]
 }
